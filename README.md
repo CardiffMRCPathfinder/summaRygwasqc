@@ -4,37 +4,64 @@ This R script is designed to automate the processing of GWAS summary statistics 
 
 This was inspired by Richard Anney's stata script designed to do a similar function (https://github.com/ricanney/stata/blob/master/code/s/summaryqc.ado)
 
-Please keep the R code 
-############################### REQUIRED PACKAGES
+############################### REQUIRED R PACKAGES
+
 library(data.table)
-library(R.utils)
+
+library(R.utils)     
+
 library(optparse)
-library(BiocManager)
-#BiocManager::install("rtracklayer")
-library(rtracklayer)
+
+library(BiocManager) 
+
+#BiocManager::install("rtracklayer").   
+
+library(rtracklayer). 
 
 ############################### FULL LIST OF OPTIONS
+
 --GWAS Path and name of GWAS Summary Statistics (REQUIRED)
+
 --HRC Location and prefix of HRC reference panel information (REQUIRED)
+
 --PRS Derive polygenic risk scores? (SET TO T IF YOU WANT TO CALCULATE PRS OR F IF NOT. REQUIRED)
+
 --MHC Remove the MHC locus (Set to T if you want to remove, F if not. Default is T)
+
 --ithres INFO score threshold (IF FLAG NOT USED DEFAULT IS 0.8)
+
 --mthres MAF threshold (IF FLAG NOT USED DEFAULT IS 0.01)
+
 --chr CHR column name (OPTIONAL - AUTOMATICALLY DETECTED but can be specified manually with this flag)
+
 --bp BP column name (OPTIONAL - AUTOMATICALLY DETECTED)
+
 --effectallele Column name for allele corresponding to or/beta/z (OPTIONAL - AUTOMATICALLY DETECTED)
+
 --nonEA Column name for allele NOT corresponding to or/beta/z (OPTIONAL - AUTOMATICALLY DETECTED)
+
 --beta BETA column name (OPTIONAL - AUTOMATICALLY DETECTED)
+
 --or OR column name (OPTIONAL - AUTOMATICALLY DETECTED)
+
 --z Z-Score column name (OPTIONAL - AUTOMATICALLY DETECTED)
+
 --pvalue Column name for GWAS p-value (OPTIONAL - AUTOMATICALLY DETECTED)
+
 --se Column name for standard error (e.g SE) (OPTIONAL - AUTOMATICALLY DETECTED)
+
 --info Column name for info or imputation quality (OPTIONAL - AUTOMATICALLY DETECTED)
+
 --snp Column name for SNP or rsID (OPTIONAL - AUTOMATICALLY DETECTED)
+
 --frq Column name for Allele 1 frequency (OPTIONAL - AUTOMATICALLY DETECTED)
+
 --prsice2 Full path to PRSice2 binary (OPTIONAL only use when --PRS T)
+
 --target Full path and prefix for target bed/bim/fam (OPTIONAL only use when --PRS T)
+
 --plink1.9 Full path to plink1.9 (OPTIONAL only use when --PRS T)
+
 --prsice2R Full path and prefix for PRSice.R (OPTIONAL only use when --PRS T)
 
 ############################### Brief order of operations:
