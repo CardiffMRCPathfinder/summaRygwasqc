@@ -68,6 +68,8 @@ suppressWarnings(if(dir.exists(outdir)==F){
 }
 )
 
+
+
 if(mhc.rm=="T"){mhc.rm=T} else if(mhc.rm=="F"){mhc.rm=F}
 path = system.file(package="liftOver", "extdata", "hg18ToHg19.over.chain")
 ch = import.chain("hg18ToHg19.over.chain")
@@ -239,8 +241,8 @@ cat(paste(effect.text,"\n",sep=""))
 
 ### Allele label checks
 
-allele1.labels=c("A1","REF","ref","ref_allele","allele","Allele","ALLELE1","ALLELE_1","EA","EFFECT_ALLELE","Effect-allele","Effect_Allele","Allele1","allele2","Effect_allele","EFF_ALLELE")
-allele2.labels=c("A2","ALT","alt","alt_allele","OA","ALLELE2","ALLELE_2","OTHER_ALLELE","NON_EFFECT_ALLELE","NEA","Other-allele","Non_Effect_Allele","ALLELE0","Allele2","Other_allele","NONEFF_ALLELE")
+allele1.labels=c("a1","A1","REF","ref","ref_allele","allele","Allele","ALLELE1","ALLELE_1","EA","EFFECT_ALLELE","Effect-allele","Effect_Allele","Allele1","allele2","Effect_allele","EFF_ALLELE")
+allele2.labels=c("a2","A2","ALT","alt","alt_allele","OA","ALLELE2","ALLELE_2","OTHER_ALLELE","NON_EFFECT_ALLELE","NEA","Other-allele","Non_Effect_Allele","ALLELE0","Allele2","Other_allele","NONEFF_ALLELE")
 
 if(length(allele1.matches)==0){
 allele1.matches=names.header[names.header %in% allele1.labels]
@@ -279,7 +281,7 @@ cat(paste(allele.text.a2,"\n",sep=""))
 
 ### Chromosome label checks
 
-chr.labels=c("CHR","chr","Chr","chromosome","CHROMOSOME","Chromosome","chrom","CHROM")
+chr.labels=c("hg19chrc","CHR","chr","Chr","chromosome","CHROMOSOME","Chromosome","chrom","CHROM")
 
 if(length(chr.matches)==0){
 chr.matches=names.header[names.header %in% chr.labels]
@@ -341,7 +343,7 @@ if(length(chr.matches)==0 & length(bp.matches)==0){
   }
 }
   
-snp.labels=c("SNP","SNPID","snp","rsid","RSID","rsID","MARKERNAME","RS_NUMBER","RS_NUMBERS","MarkerName","marker","MARKER","Marker","Marker_Name","SNPNAME","snpname","markername")
+snp.labels=c("snpid","SNP","SNPID","snp","rsid","RSID","rsID","MARKERNAME","RS_NUMBER","RS_NUMBERS","MarkerName","marker","MARKER","Marker","Marker_Name","SNPNAME","snpname","markername")
 
 if(length(snp.matches)==0){
 snp.matches=names.header[names.header %in% snp.labels]
@@ -960,7 +962,7 @@ logme(paste("Number of SNPs removed with MAF <",as.numeric(as.character(mafthres
 cat(paste("Number of SNPs removed with MAF <",as.numeric(as.character(mafthres))*100,"%: ",sum(read.table(file=paste(outdir,"/",GWAS.file,".","remove.maf.snps",sep=""),header=F)),"\n"))
 
 logme(paste("Number of SNPs removed with INFO <",as.numeric(as.character(infothres))," or > 2: ",sum(read.table(file=paste(outdir,"/",GWAS.file,".","remove.info.snps",sep=""),header=F))))
-cat(paste("Number of SNPs removed with INFO <",as.numeric(as.character(infothres)),"or > 2: ",sum(read.table(file=paste(outdir,"/",GWAS.file,".","remove.info.snps",sep=""),header=F)),"\n"))
+cat(paste("Number of SNPs removed with INFO <",as.numeric(as.character(infothres))," or > 2: ",sum(read.table(file=paste(outdir,"/",GWAS.file,".","remove.info.snps",sep=""),header=F)),"\n"))
 
 logme(paste("Number of SNPs removed with p-values outside of 0 and 1: ",sum(read.table(file=paste(outdir,"/",GWAS.file,".","remove.p.val.snps",sep=""),header=F))))
 cat(paste("Number of SNPs removed with p-values outside of 0 and 1: ",sum(read.table(file=paste(outdir,"/",GWAS.file,".","remove.p.val.snps",sep=""),header=F)),"\n"))
