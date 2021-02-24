@@ -38,7 +38,7 @@ library(rtracklayer)
 --plink1.9 Full path to plink1.9 (OPTIONAL only use when --PRS T)  
 --prsice2R Full path and prefix for PRSice.R (OPTIONAL only use when --PRS T)  
 
-# 2 AUTOMATED DETECTION AND PROCESSING OF GWAS COLUMN NAMES
+# 2 Automated detection of column names
 Identifies columns with the following headers or similar:  
 SNP (ideally contains rsIDS)  
 CHR* (Chromosome)  
@@ -50,6 +50,9 @@ OR/BETA/Z* (Effect column)
 SE (Standard error)  
 P* (SNP P-Value)  
 INFO (Imputation quality score)  
+
+Please note that if the script fails, this is most likely due to an error recognising the column IDs. Please use the appropriate flags as described above if you need to specify the column name.    
+
 Assumes that the GWAS is tab, space or comma delimited    
   
 Column detection is based on pre-defined column names. Ie, the P-value column might be named P, P_VAL, P-Value etc. It searches pre-defined matches against the GWAS column names. Columns that cannot be matched are flagged.
@@ -78,10 +81,10 @@ If both A1 and A2 are present, removes any SNPs where both alleles are discordan
 If only A1 (or if there is a single column with A2), this allele is checked against whether it exists in HRC A1 or A2. If it doesn't match the SNP is removed.  
 Removes SNPs where the BP differs between the GWAS and HRC (after checking for build issues)  
 
-# 4) CONVERTS OR TO BETA (logOR)
+# 4) Converts OR TO BETA (logOR)
 If the GWAS effect column is OR or similar, then this is automatically converted log(OR) and renamed as beta. Columns named as BETA or Z will not be changed.  
 
-# 5) CLEANUP
+# 5) Cleanup
 If all columns are present, renames the headers to those below and re-orders the data into the following column order.
 Label Column_Number
 SNP   1
