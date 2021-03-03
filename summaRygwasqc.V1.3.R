@@ -75,14 +75,14 @@ path = system.file(package="liftOver", "extdata", "hg18ToHg19.over.chain")
 ch = import.chain("hg18ToHg19.over.chain")
 
 
-#GWAS.file="A.2Gg_.fastGWA.gz"
+#GWAS.file="M15630.metal.pos.txt.gz"
 #HRC.PREFIX="HRC.Chr"
 #chr.matches=NULL
 #bp.matches=NULL
 #allele1.matches=NULL
 #snp.matches=NULL
 #p.val.matches=NULL
-##allele2.matches=NULL
+#allele2.matches=NULL
 #beta.matches=NULL
 #or.matches=NULL
 #z.matches=NULL
@@ -190,7 +190,7 @@ names(gwas.header)=names.header
 
 ### P-Value checks
 
-p.val.labels=c("P","p","pvalue","p-value","P-value","P-Value","P_VAL","PVAL","PVALUE","GC_PVALUE","P-val","Pval","Pvalue","P_LINREG","P_LOGREG","OR(A1)")
+p.val.labels=c("P","p","pvalue","p-value","P-value","P-Value","P_VAL","PVAL","PVALUE","GC_PVALUE","P-val","Pval","Pvalue","P_LINREG","P_LOGREG","p_value")
 
 if(length(p.val.matches)==0){
 p.val.matches=names.header[names.header %in% p.val.labels]
@@ -214,7 +214,7 @@ beta.matches=names.header[names.header %in% beta.labels]
 }
 
 if(length(or.matches)==0){
-or.labels=c("OR","or","oddsratio","OddsRatio")
+or.labels=c("OR","or","oddsratio","OddsRatio","OR(A1)")
 or.matches=names.header[names.header %in% or.labels]
 }
 
@@ -497,17 +497,24 @@ if(class(GWAS[,p.val.col])=="character"){
 p.val.character.vals=which(!grepl('^[0-9]',GWAS[,p.val.col]))
 logme(paste("Identified and removed ",length(p.val.character.vals)," rows from GWAS with an unexpected non-numeric value in the P-Value column",sep=""))
 cat(paste("Identified and removed ",length(p.val.character.vals)," rows from GWAS with an unexpected non-numeric value in the P-Value column\n",sep=""))
+GWAS[,p.val.col]=as.numeric(GWAS[,p.val.col])
+
+if(length(p.val.character.vals)>0){
 GWAS=GWAS[-p.val.character.vals,]
 }
-  
+}
+
 ### Frq class
 if(length(frq.matches)>0){
   if(class(GWAS[,frq.col])=="character"){
       frq.character.vals=which(!grepl('^[0-9]',GWAS[,frq.col]))
       logme(paste("Identified and removed ",length(frq.character.vals)," rows from GWAS with an unexpected non-numeric value in the allele frequency column",sep=""))
       cat(paste("Identified and removed ",length(frq.character.vals)," rows from GWAS with an unexpected non-numeric value in the allele frequency column\n",sep=""))
-      GWAS=GWAS[-frq.character.vals,]
       GWAS[,frq.col]=as.numeric(GWAS[,frq.col])
+      
+      if(length(frq.character.vals)>0){
+              GWAS=GWAS[-frq.character.vals,]
+}
   }
 }
 
@@ -517,9 +524,11 @@ if(length(info.matches)>0){
 info.character.vals=which(!grepl('^[0-9]',GWAS[,info.col]))
 logme(paste("Identified and removed ",length(info.character.vals)," rows from GWAS with an unexpected non-numeric value in the INFO column",sep=""))
 cat(paste("Identified and removed ",length(info.character.vals)," rows from GWAS with an unexpected non-numeric value in the INFO column\n",sep=""))
-
-GWAS=GWAS[-info.character.vals,]
 GWAS[,info.col]=as.numeric(GWAS[,info.col])
+
+if(length(info.character.vals)>0){
+GWAS=GWAS[-info.character.vals,]
+  }
   }
 }
 
@@ -528,9 +537,12 @@ if((length(beta.matches)>0 | length(or.matches)>0 | length(z.matches)>0) & class
 beta.character.vals=which(!grepl('^[0-9]',GWAS[,effect.col]))
 logme(paste("Identified and removed ",length(beta.character.vals)," rows from GWAS with an unexpected non-numeric value in the effect size column",sep=""))
 cat(paste("Identified and removed ",length(beta.character.vals)," rows from GWAS with an unexpected non-numeric value in the effect size column\n",sep=""))
-GWAS=GWAS[-beta.character.vals,]
 GWAS[,effect.col]=as.numeric(GWAS[,effect.col])
-}   
+
+if(length(beta.character.vals)>0){
+GWAS=GWAS[-beta.character.vals,]
+}
+}
     
 logme(paste("Number of SNPs in GWAS after removing rows with unexpected character values in numeric rows OR/BETA/Z/FRQ/INFO columns = ",nrow(GWAS),sep=""))
 cat(paste("Number of SNPs in GWAS after removing rows with unexpected character values in numeric rows OR/BETA/Z/FRQ/INFO columns = ",nrow(GWAS),"\n",sep=""))
