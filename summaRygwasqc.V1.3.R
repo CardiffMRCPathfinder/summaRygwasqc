@@ -1040,8 +1040,8 @@ allele2.matches=c(allele2.matches,5)
 }
 
 if(length(frq.matches)>0){
-  logme(paste("Old allele frequency column ID: ",frq.matches,". New allele1 column ID:", " FRQ",sep=""))
-  cat(paste("Old allele frequency column ID: ",frq.matches,". New allele1 column ID:", " FRQ\n",sep=""))
+  logme(paste("Old allele frequency column ID: ",frq.matches,". New allele frequency column ID:", " FRQ",sep=""))
+  cat(paste("Old allele frequency column ID: ",frq.matches,". New allele frequency column ID:", " FRQ\n",sep=""))
   
 frq.matches=c(frq.matches,6)
 }
