@@ -391,7 +391,7 @@ cat(paste(se.text,"\n",sep=""))
 ### Use grep to also search for these terms before throwing an error warning. 
 ### The user can also manually specifiy the number of the frequency column. 
 
-frq.labels=c("freq","FREQ","FREQ_A1","FREQ_ref","FREQ_alt","FREQ_U","FRQ","FRQ_U","frq","frequency","F_U","EAF","Effect-allele-frequency","Freq_European_1000Genomes","Freq1","FREQ1","Freq_A1","Freq.A1","A1FREQ","Freq_HapMap","Freq_1000g","Freq","EFF_ALLELE_FREQ","AF1")
+frq.labels=c("freq","FREQ","FREQ_A1","FREQ_ref","FREQ_alt","FREQ_U","FRQ","FRQ_U","frq","frequency","F_U","EAF","Effect-allele-frequency","Freq_European_1000Genomes","Freq1","FREQ1","Freq_A1","Freq.A1","A1FREQ","Freq_HapMap","Freq_1000g","Freq","EFF_ALLELE_FREQ","AF1","EAF_HRC")
 if(length(frq.matches)==0){
 frq.matches=names.header[names.header %in% frq.labels]
 }
@@ -1040,8 +1040,8 @@ allele2.matches=c(allele2.matches,5)
 }
 
 if(length(frq.matches)>0){
-  logme(paste("Old allele frequency column ID: ",frq.matches,". New allele1 column ID:", " FRQ",sep=""))
-  cat(paste("Old allele frequency column ID: ",frq.matches,". New allele1 column ID:", " FRQ\n",sep=""))
+  logme(paste("Old allele frequency column ID: ",frq.matches,". New allele frequency column ID:", " FRQ",sep=""))
+  cat(paste("Old allele frequency column ID: ",frq.matches,". New allele frequency column ID:", " FRQ\n",sep=""))
   
 frq.matches=c(frq.matches,6)
 }
