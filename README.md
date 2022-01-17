@@ -35,8 +35,12 @@ library(rtracklayer)
 --frq Column name for Allele 1 frequency (OPTIONAL - AUTOMATICALLY DETECTED)  
 --prsice2 Full path to PRSice2 binary (OPTIONAL only use when --PRS T)  
 --target Full path and prefix for target bed/bim/fam (OPTIONAL only use when --PRS T)  
---plink1.9 Full path to plink1.9 (OPTIONAL only use when --PRS T)  
---prsice2R Full path and prefix for PRSice.R (OPTIONAL only use when --PRS T)  
+--plink1.9 Full path to plink1.9 (OPTIONAL only use when --PRS T) (BETA)
+--prsice2R Full path and prefix for PRSice.R (OPTIONAL only use when --PRS T) (BETA)
+--N (OPTIONAL - Column name for total sample size)
+--outdelim (OPTIONAL - Column delimiter in output file)
+--prscs (OPTIONAL - Select T if you want output restricted to SNP, A1,A2 and BETA, uncompressed in tab delim format)
+
 
 # 2 Automated detection of column names
 Identifies columns with the following headers or similar:  
