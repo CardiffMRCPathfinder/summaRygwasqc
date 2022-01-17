@@ -1,1 +1,2 @@
-Rscript summaRygwasqc.V2.R --GWAS SP2_Alanine.txt.gz --PRS F --HRC HRC.Chr --MHC T --mthres 0.01 --ithres 0.9
+### Assuming all files are in the same directory
+Rscript summaRygwasqc.V1.3.3.R --GWAS ckqny.scz2snpres.gz --HRC HRC.Chr --PRS F --mthres 0.01 --ithres 0.8 --MHC T
