@@ -35,12 +35,11 @@ library(rtracklayer)
 --frq Column name for Allele 1 frequency (OPTIONAL - AUTOMATICALLY DETECTED)  
 --prsice2 Full path to PRSice2 binary (OPTIONAL only use when --PRS T)  
 --target Full path and prefix for target bed/bim/fam (OPTIONAL only use when --PRS T)  
---plink1.9 Full path to plink1.9 (OPTIONAL only use when --PRS T) (BETA)
---prsice2R Full path and prefix for PRSice.R (OPTIONAL only use when --PRS T) (BETA)
---N (OPTIONAL - Column name for total sample size)
---outdelim (OPTIONAL - Column delimiter in output file)
---prscs (OPTIONAL - Select T if you want output restricted to SNP, A1,A2 and BETA, uncompressed in tab delim format)
-
+--plink1.9 Full path to plink1.9 (OPTIONAL only use when --PRS T) (BETA)  
+--prsice2R Full path and prefix for PRSice.R (OPTIONAL only use when --PRS T) (BETA)  
+--N (OPTIONAL - Column name for total sample size)  
+--outdelim (OPTIONAL - Column delimiter in output file)  
+--prscs (OPTIONAL - Select T if you want output restricted to SNP, A1,A2 and BETA, uncompressed in tab delim format)  
 
 # 2 Automated detection of column names
 Identifies columns with the following headers or similar:  
@@ -116,7 +115,7 @@ Email hubbardl@cardiff.ac.uk to report errors/bugs/suggestions.
 
 # 8) Tutorial  
 We will run summaRygwasqc on the PGC2 schizophrenia summary statistics file using a MAF of 1%, an INFO threshold of 0.8 and remove the MHC.    
-Rscript summaRygwasqc.V1.3.R --GWAS ckqny.scz2snpres.gz --HRC HRC.Chr --PRS F --mthres 0.01 --ithres 0.8 --MHC T
+Rscript summaRygwasqc.V1.3.3.R --GWAS ckqny.scz2snpres.gz --HRC HRC.Chr --PRS F --mthres 0.01 --ithres 0.8 --MHC T
 
 The log file produced can be seen below:
 
