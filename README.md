@@ -74,8 +74,8 @@ Converts letters in allele columns to be upper case (if lower)
   
 SNPs are removed if:  
 Not autosomal (only keeps chrs 1-22)  
-MAF < Specified threshold
-INFO < Specified threshold or > 2
+MAF < Specified threshold  
+INFO < Specified threshold or > 2  
 Non-numeric values are found in rows where there is only expected to be numeric input (ie OR/BETA/INFO/Frequency)  
 SNPs have multiple alleles in A1 or A2 (indels)  
 Removes rows with any non ATGC SNP. Note this, and the previous step are theoretically different but produce the same number of SNPs being removed. This is not an error but these numbers should not be considered independent.  
