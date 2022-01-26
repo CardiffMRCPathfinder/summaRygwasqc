@@ -1,5 +1,7 @@
 # summaRygwasqc
 
+Albert Einstein — 'Two things are infinite: the universe and the number of ways of formatting GWAS summary statistics, and I'm not sure about the universe.'  
+
 This R script is designed to automate the processing of GWAS summary statistics, aligns SNP information against the HRC reference panel, performs QC and outputs results in a standardised format. This will take approximately 2-4 minutes depending on the size of the GWAS.  
 
 This was inspired by Richard Anney's stata script designed to do a similar function (https://github.com/ricanney/stata/blob/master/code/s/summaryqc.ado)
@@ -39,8 +41,10 @@ library(rtracklayer)
 --prsice2R Full path and prefix for PRSice.R (OPTIONAL only use when --PRS T) (BETA)  
 --N (OPTIONAL - Column name for total sample size)  
 --outdelim (OPTIONAL - Column delimiter in output file)  
---prscs (OPTIONAL - Select T if you want output restricted to SNP, A1,A2 and BETA, uncompressed in tab delim format)  
-
+--prscs (OPTIONAL - Select T if you want PRSCS formatted output)  
+--lava (OPTIONAL - Select T if you want LAVA formatted output. N (sample size col must be specified))  
+--ldsc (OPTIONAL - Select T if you want LDSC formatted output. N (sample size col must be specified))  
+  
 # 2 Automated detection of column names
 Identifies columns with the following headers or similar:  
 SNP (ideally contains rsIDS)  
@@ -115,11 +119,11 @@ Email hubbardl@cardiff.ac.uk to report errors/bugs/suggestions.
 
 # 8) Tutorial  
 We will run summaRygwasqc on the PGC2 schizophrenia summary statistics file using a MAF of 1%, an INFO threshold of 0.8 and remove the MHC.    
-Rscript summaRygwasqc.V1.3.3.R --GWAS ckqny.scz2snpres.gz --HRC HRC.Chr --PRS F --mthres 0.01 --ithres 0.8 --MHC T
+Rscript summaRygwasqc.V1.3.4.R --GWAS ckqny.scz2snpres.gz --HRC HRC.Chr --PRS F --mthres 0.01 --ithres 0.8 --MHC T
 
 The log file produced can be seen below:
 
-Running summaRygwasqc v1.3  
+Running summaRygwasqc v1.3.4  
 Processing GWAS file ckqny.scz2snpres.gz  
 Interpreting p-value to GWAS column 9: p  
 Interpreting effect size to GWAS column 7: or  
