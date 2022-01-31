@@ -1246,11 +1246,18 @@ if(lava==T){
   write.table(all.chrs.cleaned[,c(SNP.COL,A1.COL,A2.COL,N.COL,BETA.COL,P.COL)],prscs.output,col.names=T,row.names=F,quote=F,sep=" ")
 }
 
-if(ldsc==T){
+if(ldsc==T & length(N.matches)>0){
   logme(paste("Writing cleaned GWAS summary statistics in LDSC format to ",GWAS.file,".summaRyQC.ldsc.txt.gz",sep=""))
   cat(paste("Writing cleaned GWAS summary statistics in LDSC format to ",GWAS.file,".summaRyQC.ldsc.txt.gz\n",sep=""))
   gz.output.ldsc=gzfile(paste(outdir,"/",GWAS.file,".summaRyQC.ldsc.txt.gz",sep=""))
   write.table(all.chrs.cleaned[,c(SNP.COL,A1.COL,A2.COL,N.COL,P.COL,BETA.COL)],gz.output.ldsc,col.names=T,row.names=F,quote=F,sep=" ")
+}
+
+if(ldsc==T & length(N.matches)==0){
+  logme(paste("Writing cleaned GWAS summary statistics in LDSC format to ",GWAS.file,".summaRyQC.ldsc.txt.gz",sep=""))
+  cat(paste("Writing cleaned GWAS summary statistics in LDSC format to ",GWAS.file,".summaRyQC.ldsc.txt.gz\n",sep=""))
+  gz.output.ldsc=gzfile(paste(outdir,"/",GWAS.file,".summaRyQC.ldsc.txt.gz",sep=""))
+  write.table(all.chrs.cleaned[,c(SNP.COL,A1.COL,A2.COL,P.COL,BETA.COL)],gz.output.ldsc,col.names=T,row.names=F,quote=F,sep=" ")
 }
 
 logme(paste("Output can be found in this directory: ",outdir,sep=""))
