@@ -252,7 +252,7 @@ names(gwas.header)=names.header
 
 ### P-Value checks
 
-p.val.labels=c("P","p","pvalue","p-value","P-value","P-Value","P_VAL","PVAL","PVALUE","GC_PVALUE","P-val","Pval","Pvalue","P_LINREG","P_LOGREG","p_value","PVAL")
+p.val.labels=c("P","p","pvalue","p-value","P-value","P-Value","P_VAL","PVAL","PVALUE","GC_PVALUE","P-val","Pval","Pvalue","P_LINREG","P_LOGREG","p_value","PVAL","P.value","P_BOLT_LMM","p_wald")
 
 if(length(p.val.matches)==0){
 p.val.matches=names.header[names.header %in% p.val.labels]
@@ -269,7 +269,7 @@ cat(paste(p.val.text,"\n",sep=""))
 
 ### N checks
 
-Nlabels=c("TotalSampleSize","N","Nca","Nco")
+Nlabels=c("TotalSampleSize","N","Nca","Nco","TotalN","NCAS","NCON","n","Nsum","N_analyzed","Total_N")
 
 if(length(N.matches)==0){
   N.text=paste("No N Samples column requested",sep="")
@@ -298,14 +298,14 @@ cat(paste(N.text,"\n",sep=""))
 
 ### Effect size checks
 
-beta.labels=c("BETA","Beta","beta","LOG_OR","Effect","Effect_Beta","b","LogOR")
+beta.labels=c("BETA","Beta","beta","LOG_OR","Effect","Effect_Beta","b","LogOR","est","stdBeta")
 
 if(length(beta.matches)==0){
 beta.matches=names.header[names.header %in% beta.labels]
 }
 
 if(length(or.matches)==0){
-or.labels=c("OR","or","oddsratio","OddsRatio","OR(A1)")
+or.labels=c("OR","or","oddsratio","OddsRatio","OR(A1)","odds_ratio")
 or.matches=names.header[names.header %in% or.labels]
 }
 
@@ -332,8 +332,8 @@ cat(paste(effect.text,"\n",sep=""))
 
 ### Allele label checks
 
-allele1.labels=c("a1","A1","REF","ref","ref_allele","allele","Allele","ALLELE1","ALLELE_1","EA","EFFECT_ALLELE","Effect-allele","Effect_Allele","Allele1","allele2","Effect_allele","EFF_ALLELE","effect_allele")
-allele2.labels=c("a2","A2","ALT","alt","alt_allele","OA","ALLELE2","ALLELE_2","OTHER_ALLELE","NON_EFFECT_ALLELE","NEA","Other-allele","Non_Effect_Allele","ALLELE0","Allele2","Other_allele","NONEFF_ALLELE","other_allele")
+allele1.labels=c("a1","A1","REF","ref","ref_allele","allele","Allele","ALLELE1","ALLELE_1","EA","EFFECT_ALLELE","Effect-allele","Effect_Allele","Allele1","allele2","Effect_allele","EFF_ALLELE","effect_allele","allele1","a_0","testedAllele")
+allele2.labels=c("a2","A2","ALT","alt","alt_allele","OA","ALLELE2","ALLELE_2","OTHER_ALLELE","NON_EFFECT_ALLELE","NEA","Other-allele","Non_Effect_Allele","ALLELE0","Allele2","Other_allele","NONEFF_ALLELE","other_allele","allele2","neffect_allele","a_1","otherAllele")
 
 if(length(allele1.matches)==0){
 allele1.matches=names.header[names.header %in% allele1.labels]
@@ -387,7 +387,7 @@ if(length(chr.matches)>0){
 cat(paste(chr.text,"\n",sep=""))
 
 
-bp.labels=c("BP","bp","baseposition","Bp","POSITION","Position_hg19","POS","pos","Pos","Position(hg19)")
+bp.labels=c("BP","bp","baseposition","Bp","POSITION","Position_hg19","POS","pos","Pos","Position(hg19)","PosGRCh37","base_pair_location")
 
 if(length(bp.matches)==0){
 bp.matches=names.header[names.header %in% bp.labels]
@@ -434,7 +434,7 @@ if(length(chr.matches)==0 & length(bp.matches)==0){
   }
 }
   
-snp.labels=c("snpid","SNP","SNPID","snp","rsid","RSID","rsID","MARKERNAME","RS_NUMBER","RS_NUMBERS","MarkerName","marker","MARKER","Marker","Marker_Name","SNPNAME","snpname","markername","ID")
+snp.labels=c("snpid","SNP","SNPID","snp","rsid","RSID","rsID","MARKERNAME","RS_NUMBER","RS_NUMBERS","MarkerName","marker","MARKER","Marker","Marker_Name","SNPNAME","snpname","markername","ID","variant_id")
 
 if(length(snp.matches)==0){
 snp.matches=names.header[names.header %in% snp.labels]
@@ -451,7 +451,7 @@ if(length(snp.matches)>0){
   
 }
 
-info.labels=c("INFO","info","R2","r2","INFO-score","Info-score","info-score","IMPINFO")
+info.labels=c("INFO","info","R2","r2","INFO-score","Info-score","info-score","IMPINFO","minINFO","INFO_UKB")
 
 if(length(info.matches)==0){
 info.matches=names.header[names.header %in% info.labels]
@@ -466,7 +466,7 @@ if(length(info.matches)>0){
 cat(paste(info.text,"\n",sep=""))
 
 
-se.labels=c("SE","se","standarderror","standard_error","Standard_error","Standard_Error","STANDARD_ERROR","STANDARDERROR","StdErr","StdErrLogOR","SEBETA","stderr")
+se.labels=c("SE","se","standarderror","standard_error","Standard_error","Standard_Error","STANDARD_ERROR","STANDARDERROR","StdErr","StdErrLogOR","SEBETA","stderr","effect_allele_frequency","EAF_HRC","MAF","EAF_UKB","EAF_A1","A1FREQ","FREQA1_HRC")
 if(length(se.matches)==0){
 se.matches=names.header[names.header %in% se.labels]
 }
