@@ -472,7 +472,7 @@ if(length(info.matches)>0){
 cat(paste(info.text,"\n",sep=""))
 
 
-se.labels=c("SE","se","standarderror","standard_error","Standard_error","Standard_Error","STANDARD_ERROR","STANDARDERROR","StdErr","StdErrLogOR","SEBETA","stderr","effect_allele_frequency","EAF_HRC","MAF","EAF_UKB","EAF_A1","A1FREQ","FREQA1_HRC")
+se.labels=c("SE","se","standarderror","standard_error","Standard_error","Standard_Error","STANDARD_ERROR","STANDARDERROR","StdErr","StdErrLogOR","SEBETA","stderr")
 if(length(se.matches)==0){
 se.matches=names.header[names.header %in% se.labels]
 }
@@ -488,7 +488,7 @@ cat(paste(se.text,"\n",sep=""))
 ### Use grep to also search for these terms before throwing an error warning. 
 ### The user can also manually specifiy the number of the frequency column. 
 
-frq.labels=c("freq","FREQ","FREQ_A1","FREQ_ref","FREQ_alt","FREQ_U","FRQ","FRQ_U","frq","frequency","F_U","EAF","Effect-allele-frequency","Freq_European_1000Genomes","eaf_hapmap_CEU","Freq1","FREQ1","Freq_A1","Freq.A1","A1FREQ","Freq_HapMap","Freq_1000g","Freq","EFF_ALLELE_FREQ","AF1","FCON")
+frq.labels=c("freq","FREQ","FREQ_A1","FREQ_ref","FREQ_alt","FREQ_U","FRQ","FRQ_U","frq","frequency","F_U","EAF","Effect-allele-frequency","Freq_European_1000Genomes","eaf_hapmap_CEU","Freq1","FREQ1","Freq_A1","Freq.A1","A1FREQ","Freq_HapMap","Freq_1000g","Freq","EFF_ALLELE_FREQ","AF1","FCON","effect_allele_frequency","EAF_HRC","EAF_UKB","EAF_A1","A1FREQ","FREQA1_HRC")
 if(length(frq.matches)==0){
 frq.matches=names.header[names.header %in% frq.labels]
 }
