@@ -137,7 +137,7 @@ path = system.file(package="liftOver", "extdata", "hg18ToHg19.over.chain")
 ch = import.chain("hg18ToHg19.over.chain")
 
 
-#GWAS.file="HbA1c_METAL_European.txt.gz"
+GWAS.file="pgc-panic2019.vcf.format.tsv.gz"
 #HRC.PREFIX="HRC.Chr"
 #chr.matches=NULL
 #bp.matches=NULL
@@ -272,12 +272,12 @@ cat(paste(p.val.text,"\n",sep=""))
 Nlabels=c("TotalSampleSize","N","Nca","Nco","TotalN","NCAS","NCON","n","Nsum","N_analyzed","Total_N")
 N.matches=names.header[names.header %in% Nlabels]
 
-suppressWarnings(if(length(N.matches)==0){
+suppressWarnings(if(length(N.matches)==0 & ldsc=="F"){
   N.text=paste("No N Samples column requested",sep="")
-} else if(length(N.matches)==0 & ldsc==T){
+} else if(length(N.matches)==0 & ldsc=="T"){
   N.text=paste("You requested LDSC output files, but no N column has been identified in the GWAS.")
   cat(paste(N.text,"\n",sep=""))
-} else if(length(N.matches)==0 & lava==T){
+} else if(length(N.matches)==0 & lava=="T"){
   N.text=paste("You requested LAVA output files, but no N column has been identified in the GWAS.")
   cat(paste(N.text,"\n",sep=""))
 } else if(length(N.matches)==1){
@@ -560,7 +560,7 @@ cat(paste("Highest N= ",MAX.N,"\n",sep=""))
 }
 
 if(length(N.matches)==2){
-  MAX.N=max(GWAS[,N.col[1]],na.rm = T)+max(GWAS[,N.col[2]],na.rm = T)
+  MAX.N=max(GWAS[,N.col1],na.rm = T)+max(GWAS[,N.col2],na.rm = T)
   logme(paste("Highest N= ",MAX.N,sep=""))
   cat(paste("Highest N= ",MAX.N,"\n",sep=""))
 }
