@@ -270,37 +270,29 @@ cat(paste(p.val.text,"\n",sep=""))
 ### N checks
 
 Nlabels=c("TotalSampleSize","N","Nca","Nco","TotalN","NCAS","NCON","n","Nsum","N_analyzed","Total_N")
+N.matches=names.header[names.header %in% Nlabels]
 
-if(length(N.matches)==0){
+suppressWarnings(if(length(N.matches)==0){
   N.text=paste("No N Samples column requested",sep="")
-  }
-
-suppressWarnings(if(length(N.matches)==1){
-  N.matches=names.header[names.header %in% Nlabels]
-  
-  if(length(N.matches)==0 & ldsc==T){
-    N.text=paste("You requested LDSC output files, but no N column has been identified in the GWAS.")
-    cat(paste(N.text,"\n",sep=""))
-  }
-  
-  else if(length(N.matches)==0 & lava==T){
-    N.text=paste("You requested LAVA output files, but no N column has been identified in the GWAS.")
-    cat(paste(N.text,"\n",sep=""))
-  }
-    
-  else if(length(N.matches)==1){
+} else if(length(N.matches)==0 & ldsc==T){
+  N.text=paste("You requested LDSC output files, but no N column has been identified in the GWAS.")
+  cat(paste(N.text,"\n",sep=""))
+} else if(length(N.matches)==0 & lava==T){
+  N.text=paste("You requested LAVA output files, but no N column has been identified in the GWAS.")
+  cat(paste(N.text,"\n",sep=""))
+} else if(length(N.matches)==1){
   N.col=which(names.header==N.matches)
   N.text=paste("Interpreting N Samples to GWAS column ",N.col,": ",names.header[N.col],sep="")
 } else if(length(N.matches)==2){
-  N.col=which(names.header==N.matches)
-  N.text=paste("Interpreting N Samples to GWAS column ",N.col,": ",names.header[N.col],sep="",collapse = " and ")
+  N.col1=which(names.header==N.matches[1])
+  N.col2=which(names.header==N.matches[2])
+  N.text=paste("Interpreting N Samples to GWAS column ",N.col1,": ",names.header[N.col1]," and ", N.col2,": ",names.header[N.col2],sep="")
   N.text1=paste("Two N columns have been identified. The max value in each column will be used and summed to give a total N.")
   cat(paste(N.text1,"\n",sep=""))
 }
-  })
-cat(paste(N.text,"\n",sep=""))
+)
 
-###
+cat(paste(N.text,"\n",sep=""))
 
 ### Effect size checks
 
