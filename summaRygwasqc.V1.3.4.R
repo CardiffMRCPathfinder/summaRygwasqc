@@ -413,9 +413,9 @@ if(length(chr.matches)==0 & length(bp.matches)==0){
   logme("No CHR or BP column recognised. Attempting to identify whether CHR and BP are in a single column.")
   cat("No CHR or BP column recognised. Attempting to identify whether CHR and BP are in a single column.\n")
   if(length(grep(".gz",GWAS.file))==1){
-  system(paste("zcat ",GWAS.file," | head -n100 | grep : > ",GWAS.file,".header",sep=""))
+  system(paste("zcat ",GWAS.file," | head -n100 | grep : > ",outdir,"/",GWAS.file,".header",sep=""))
   } else if(length(grep(".gz",GWAS.file))==0){
-    system(paste("cat ",GWAS.file," | head -n100 | grep : > ",GWAS.file,".header",sep=""))
+    system(paste("cat ",GWAS.file," | head -n100 | grep : > ",outdir,"/",GWAS.file,".header",sep=""))
   }
   
   gwas.lite=read.table(file=paste(outdir,"/",GWAS.file,".header",sep=""),header=F,stringsAsFactors = F)
