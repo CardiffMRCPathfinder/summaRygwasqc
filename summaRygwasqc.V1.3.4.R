@@ -137,7 +137,7 @@ path = system.file(package="liftOver", "extdata", "hg18ToHg19.over.chain")
 ch = import.chain("hg18ToHg19.over.chain")
 
 
-GWAS.file="pgc-panic2019.vcf.format.tsv.gz"
+# GWAS.file="AUDIT_T_CLEAN.txt.gz"
 #HRC.PREFIX="HRC.Chr"
 #chr.matches=NULL
 #bp.matches=NULL
@@ -252,7 +252,7 @@ names(gwas.header)=names.header
 
 ### P-Value checks
 
-p.val.labels=c("P","p","pvalue","p-value","P-value","P-Value","P_VAL","PVAL","PVALUE","GC_PVALUE","P-val","Pval","Pvalue","P_LINREG","P_LOGREG","p_value","PVAL","P.value","P_BOLT_LMM","p_wald")
+p.val.labels=c("P","p","pvalue","p-value","P-value","P-Value","P_VAL","PVAL","PVALUE","GC_PVALUE","P-val","Pval","Pvalue","P_LINREG","P_LOGREG","p_value","PVAL","P.value","P_BOLT_LMM","p_wald","p_T")
 
 if(length(p.val.matches)==0){
 p.val.matches=names.header[names.header %in% p.val.labels]
@@ -272,12 +272,12 @@ cat(paste(p.val.text,"\n",sep=""))
 Nlabels=c("TotalSampleSize","N","Nca","Nco","TotalN","NCAS","NCON","n","Nsum","N_analyzed","Total_N")
 N.matches=names.header[names.header %in% Nlabels]
 
-suppressWarnings(if(length(N.matches)==0 & ldsc=="F"){
+suppressWarnings(if(length(N.matches)==0 & ldsc==F){
   N.text=paste("No N Samples column requested",sep="")
-} else if(length(N.matches)==0 & ldsc=="T"){
+} else if(length(N.matches)==0 & ldsc==T){
   N.text=paste("You requested LDSC output files, but no N column has been identified in the GWAS.")
   cat(paste(N.text,"\n",sep=""))
-} else if(length(N.matches)==0 & lava=="T"){
+} else if(length(N.matches)==0 & lava==T){
   N.text=paste("You requested LAVA output files, but no N column has been identified in the GWAS.")
   cat(paste(N.text,"\n",sep=""))
 } else if(length(N.matches)==1){
@@ -296,7 +296,7 @@ cat(paste(N.text,"\n",sep=""))
 
 ### Effect size checks
 
-beta.labels=c("BETA","Beta","beta","LOG_OR","Effect","Effect_Beta","b","LogOR","est","stdBeta")
+beta.labels=c("BETA","Beta","beta","LOG_OR","Effect","Effect_Beta","b","LogOR","est","stdBeta","beta_T")
 
 if(length(beta.matches)==0){
 beta.matches=names.header[names.header %in% beta.labels]
@@ -464,7 +464,7 @@ if(length(info.matches)>0){
 cat(paste(info.text,"\n",sep=""))
 
 
-se.labels=c("SE","se","standarderror","standard_error","Standard_error","Standard_Error","STANDARD_ERROR","STANDARDERROR","StdErr","StdErrLogOR","SEBETA","stderr")
+se.labels=c("SE","se","standarderror","standard_error","Standard_error","Standard_Error","STANDARD_ERROR","STANDARDERROR","StdErr","StdErrLogOR","SEBETA","stderr","se_T")
 if(length(se.matches)==0){
 se.matches=names.header[names.header %in% se.labels]
 }
