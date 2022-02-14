@@ -644,7 +644,15 @@ if(length(beta.character.vals)>0){
 GWAS=GWAS[-beta.character.vals,]
 }
 }
-    
+
+if(length(beta.matches)==0 | length(or.matches)>0){
+  min.or=min(GWAS[,effect.col])
+  
+  if(min.or<0){
+    stop(paste("You have negative values in your OR column. Please check if this is mislabelled"))
+  }
+}    
+
 logme(paste("Number of SNPs in GWAS after removing rows with unexpected character values in numeric rows OR/BETA/Z/FRQ/INFO columns = ",nrow(GWAS),sep=""))
 cat(paste("Number of SNPs in GWAS after removing rows with unexpected character values in numeric rows OR/BETA/Z/FRQ/INFO columns = ",nrow(GWAS),"\n",sep=""))
 
