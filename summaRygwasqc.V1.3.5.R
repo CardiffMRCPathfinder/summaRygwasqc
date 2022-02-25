@@ -1,4 +1,4 @@
-### summaRygwasqc V1.3.3
+### summaRygwasqc V1.3.5
 ### Leon Hubbard, Richard Anney, Cardiff MRC Pathfinder WS1
 
 ### OPTIMISATIONS NEEDED:
