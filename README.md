@@ -17,7 +17,7 @@ library(rtracklayer)
 
 # Full list of options
 
---GWAS Path and name of GWAS Summary Statistics (REQUIRED)  
+--GWAS Path and name of GWAS Summary Statistics (REQUIRED) PLEASE NOTE A BUG IS CURRENTLY CAUSING ISSUES IF THE GWAS FILE IS IN A DIFFERENT DIRECTORY TO THE MAIN RSCRIPT AND OTHER FILES. PLEASE KEEP ALL FILES IN THE SAME DIRECTORY UNTIL A FIX IS RELEASED. THANK YOU :)  
 --HRC Location and prefix of HRC reference panel information (REQUIRED)  
 --PRS Derive polygenic risk scores? (SET TO T IF YOU WANT TO CALCULATE PRS OR F IF NOT. REQUIRED)  
 --MHC Remove the MHC locus (Set to T if you want to remove, F if not. Default is T)  
