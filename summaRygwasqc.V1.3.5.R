@@ -330,7 +330,7 @@ if(length(beta.matches)==0){
 }
 
 if(length(or.matches)==0){
-  or.labels=c("OR","or","oddsratio","OddsRatio","OR(A1)","odds_ratio")
+  or.labels=c("OR","or","oddsratio","OddsRatio","OR(A1)","odds_ratio","OR-A1"))
   or.matches=names.header[names.header %in% or.labels]
 }
 
