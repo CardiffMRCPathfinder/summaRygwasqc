@@ -208,8 +208,8 @@ if(file.exists(paste(outdir,"/",GWAS.file,".remove.hrcdiscalleles.snps",sep=""))
   system(paste("rm ",outdir,"/",GWAS.file,".remove.hrcdiscalleles.snps",sep=""))
 }
 
-logmestart("Running summaRygwasqc v1.3.4")
-cat(paste("Running summaRygwasqc v1.3.4\n"))
+logmestart("Running summaRygwasqc v1.3.5")
+cat(paste("Running summaRygwasqc v1.3.5\n"))
 
 ############## Step 1 - Auto detect column names and stop pipeline if essential columns are missing
 
